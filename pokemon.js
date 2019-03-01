@@ -225,7 +225,7 @@ module.exports = function () {
   router.post('/', function (req, res) {
     console.log('HELLO?');
     var mysql = req.app.get('mysql');
-    var sql = "INSERT INTO pokemon (p_id, p_no, p_name, p_catchrate) VALUES (?,?,?,?)";
+    var sql = "INSERT INTO Pokemon (p_id, p_no, p_name, p_catchrate) VALUES (?,?,?,?)";
     var inserts = [req.body.p_id, req.body.p_no, req.body.p_name, req.body.p_catchrate];
     mysql.pool.query(sql, inserts, function (error, results, fields) {
       if (error) {
