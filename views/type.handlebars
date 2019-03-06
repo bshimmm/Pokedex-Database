@@ -1,0 +1,34 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<h3>Add a Type:</h3>
+<form id="addtype" action="/type" method="post">
+  Type Name: <input type="text" name="type_name"><br>
+  Weak Against: <input type="text" name="weak_against"><br>
+  Strong Against: <input type="text" name="strong_against"><br>
+  <input type="submit" value="Submit">
+</form>
+<br />
+
+<h3>Current Types:</h3>
+<table>
+  <thead>
+    <th>Type ID</th>
+    <th>Type Name</th>
+    <th>Weak Against</th>
+    <th>Strong Against</th>
+  </thead>
+  <tbody>
+    {{#each type}}
+    <tr>
+      <td>{{type_id}}</td>
+      <td>{{type_name}}</td>
+      <td>{{weak_against}}</td>
+      <td>{{strong_against}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</html>

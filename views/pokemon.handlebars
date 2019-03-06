@@ -3,11 +3,10 @@
 {{this}}
 {{/each}}
 <h3>Add new Pokemon:</h3>
-<form id="addperson" action="/pokemon" method="post">
-  Pokemon Id: <input type="text" name="p_id"><br>
+<form id="addpokemon" action="/pokemon" method="post">
   Pokemon No: <input type="text" name="p_no"><br>
   Pokemon Name: <input type="text" name="p_name"><br>
-  Catch Rate: <input type="number" name="p_catchrate"><br>
+  Catch Rate: <input type="number" step = "0.01" name="p_catchrate"><br>
   <input type="submit" value="Submit">
 </form>
 <br />
