@@ -22,6 +22,8 @@ app.use('/pokemon', require('./pokemon.js'));
 
 app.use('/type', require('./type.js'));
 
+app.use('/move', require('./move.js'));
+
 app.use('/', express.static('public'));
 
 app.use(function(req,res){
