@@ -18,7 +18,7 @@ app.set('view engine', 'handlebars');
 app.set('port', process.argv[2]);
 app.set('mysql', mysql);
 
-app.use('/', require('./pokemon.js'));
+app.use('/pokemon', require('./pokemon.js'));
 
 app.use('/type', require('./type.js'));
 
