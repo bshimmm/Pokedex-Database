@@ -24,6 +24,10 @@ app.use('/type', require('./type.js'));
 
 app.use('/move', require('./move.js'));
 
+app.use('/pokemonball', require('./pokemonball.js'));
+
+app.use('/location', require('./location.js'));
+
 app.use('/', express.static('public'));
 
 app.use(function(req,res){

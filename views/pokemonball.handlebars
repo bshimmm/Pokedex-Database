@@ -1,0 +1,31 @@
+<html>
+{{#each foo}}
+{{this}}
+{{/each}}
+<h3>Add a Ball:</h3>
+<form id="addpokemonball" action="/pokemonball" method="post">
+  Ball Name: <input type="text" name="pb_name"><br>
+  Cost: <input type="text" name="pb_cost"><br>
+  <input type="submit" value="Submit">
+</form>
+<br />
+
+<h3>Current Pokemon Balls:</h3>
+<table>
+  <thead>
+    <th>Ball ID</th>
+    <th>Ball Name</th>
+    <th>Cost</th>
+  </thead>
+  <tbody>
+    {{#each pokemonball}}
+    <tr>
+      <td>{{pb_id}}</td>
+      <td>{{pb_name}}</td>
+      <td>{{pb_cost}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+</html>
