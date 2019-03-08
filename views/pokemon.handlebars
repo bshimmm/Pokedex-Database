@@ -12,7 +12,7 @@
 <br />
 
 <h3>Current Pokemon:</h3>
-<table>
+<table id ="pokemonTable">
   <thead>
     <th>Pokemon ID</th>
     <th>Pokemon No</th>
@@ -22,13 +22,41 @@
   <tbody>
     {{#each pokemon}}
     <tr>
-      <td>{{p_id}}</td>
-      <td>{{p_no}}</td>
-      <td>{{p_name}}</td>
-      <td>{{p_catchrate}}</td>
+      <td>{{this.p_id}}</td>
+      <td>{{this.p_no}}</td>
+      <td>{{this.p_name}}</td>
+      <td>{{this.p_catchrate}}</td>
+      <td><form method = "get" action = "./edit"><input type = "hidden" name = "id" value = {{this.p_id}}>
+      <button type = "submit">Update</button></form>
+      </td>
+      <td><input type = "button" name={{this.p_id}} id = "delete" value = "Delete" onClick ="deleteRow(this, {{this.p_id}})"></input>
     </tr>
     {{/each}}
   </tbody>
 </table>
+
+<script>
+  function deleteRow(row, id){
+    var req = new XMLHttpRequest();
+    var url = 'http://locahost:3000/delete?p_id=' + id; 
+    req.open('GET', url);
+            var payload ={
+                p_id: id
+            };
+            console.log(JSON.stringify(payload));
+            req.send(JSON.stringify(payload)); //send JSON string-formatted object
+            event.preventDefault();
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('pokemonTable').deleteRow(i);
+    /*
+    success: function(result){
+      window.location.reload(true);
+    }
+    */
+  }
+</script>
+
+
+
 
 </html>
