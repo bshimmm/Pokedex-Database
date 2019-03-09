@@ -85,7 +85,7 @@ module.exports = function () {
   router.delete('/delete', function(req, res) {
   var mysql = req.app.get('mysql'); 
   var sql = "DELETE FROM pokemon WHERE p_id=?";
-  var inserts = [req.params.p_id];
+  var inserts = [req.query.p_id];
   sql = mysql.pool.query(sql, inserts, function(error, results, fields){
       if(error){
        res.write(JSON.stringify(error)); 
