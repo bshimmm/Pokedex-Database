@@ -47,6 +47,9 @@ module.exports = function () {
       }
     })
   })
+
+  //adding a pokemon
+  router
 //update pokemon
 /*
   router.get('/update', function(req,res,next){

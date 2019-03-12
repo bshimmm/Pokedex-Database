@@ -11,7 +11,7 @@
 <br />
 
 <h3>Current Pokemon Balls:</h3>
-<table>
+<table id="pbTable">
   <thead>
     <th>Ball ID</th>
     <th>Ball Name</th>
@@ -23,9 +23,19 @@
       <td>{{pb_id}}</td>
       <td>{{pb_name}}</td>
       <td>{{pb_cost}}</td>
+      <td><input type = "button" name={{this.pb_id}} id = "delete" value = "Delete" onClick ="deleteRow(this, {{this.pb_id}})"></input>
     </tr>
     {{/each}}
   </tbody>
 </table>
-
+<script>
+    function deleteRow(row, id){
+    var req = new XMLHttpRequest();
+    var url = '/pokemonball/delete?pb_id=' + id;
+    req.open('DELETE', url);
+    req.send();
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('pbTable').deleteRow(i);
+  }
+</script>
 </html>

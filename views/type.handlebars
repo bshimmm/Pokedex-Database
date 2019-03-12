@@ -12,7 +12,7 @@
 <br />
 
 <h3>Current Types:</h3>
-<table>
+<table id="typeTable">
   <thead>
     <th>Type ID</th>
     <th>Type Name</th>
@@ -26,9 +26,19 @@
       <td>{{type_name}}</td>
       <td>{{weak_against}}</td>
       <td>{{strong_against}}</td>
+      <td><input type = "button" name={{this.type_id}} id = "delete" value = "Delete" onClick ="deleteRow(this, {{this.type_id}})"></input>
     </tr>
     {{/each}}
   </tbody>
 </table>
-
+<script>
+    function deleteRow(row, id){
+    var req = new XMLHttpRequest();
+    var url = '/type/delete?type_id=' + id;
+    req.open('DELETE', url);
+    req.send();
+    var i=row.parentNode.parentNode.rowIndex;
+    document.getElementById('typeTable').deleteRow(i);
+  }
+</script>
 </html>
