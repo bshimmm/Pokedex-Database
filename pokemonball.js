@@ -4,7 +4,7 @@ module.exports = function () {
 
 router.get('/', function (req, res) {
   var mysql = req.app.get('mysql');
-  var sql = "SELECT * FROM pokemonball";
+  var sql = "SELECT * FROM PokemonBall";
   var inserts = [];
   var context = {};
   var callbackCount = 0;
@@ -32,7 +32,7 @@ router.get('/', function (req, res) {
 router.post('/', function (req, res) {
   console.log('HELLO?');
   var mysql = req.app.get('mysql');
-  var sql = "INSERT INTO pokemonball (pb_name, pb_cost) VALUES (?,?)";
+  var sql = "INSERT INTO PokemonBall (pb_name, pb_cost) VALUES (?,?)";
   var inserts = [req.body.pb_name, req.body.pb_cost];
   mysql.pool.query(sql, inserts, function (error, results, fields) {
     if (error) {
@@ -44,6 +44,21 @@ router.post('/', function (req, res) {
     }
   })
 })
+
+router.delete('/delete', function(req, res) {
+  var mysql = req.app.get('mysql'); 
+  var sql = "DELETE FROM PokemonBall WHERE pb_id=?";
+  var inserts = [req.query.pb_id];
+  sql = mysql.pool.query(sql, inserts, function(error, results, fields){
+      if(error){
+       res.write(JSON.stringify(error)); 
+         res.status(400); 
+       res.end(); 
+      } else{
+        res.status(202).end();
+      }
+    })
+  })
 
 return router;
 }();

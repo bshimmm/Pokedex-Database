@@ -26,9 +26,7 @@
       <td>{{this.p_no}}</td>
       <td>{{this.p_name}}</td>
       <td>{{this.p_catchrate}}</td>
-      <td><form method = "get" action = "./edit"><input type = "hidden" name = "id" value = {{this.p_id}}>
-      <button type = "submit">Update</button></form>
-      </td>
+      <td><a href="/pokemon/{{p_id}}">Update<</a></td>
       <td><input type = "button" name={{this.p_id}} id = "delete" value = "Delete" onClick ="deleteRow(this, {{this.p_id}})"></input>
     </tr>
     {{/each}}
@@ -36,21 +34,16 @@
 </table>
 
 <script>
-  function deleteRow(row, id){
+    function deleteRow(row, id){
     var req = new XMLHttpRequest();
     var url = '/pokemon/delete?p_id=' + id;
     req.open('DELETE', url);
     req.send();
     var i=row.parentNode.parentNode.rowIndex;
     document.getElementById('pokemonTable').deleteRow(i);
-    /*
-    success: function(result){
-      window.location.reload(true);
-    }
-    */
   }
-</script>
 
+</script>
 
 
 
