@@ -1,8 +1,8 @@
 function updatePokemon(id){
 	$.ajax({
-		url: '/pokemon/' + id,
+		url: '/pokemonball/' + id,
 		type: 'PUT',
-		data: $('#update-pokemon').serialize(),
+		data: $('#update-pbball').serialize(),
 		success: function(result){
 			window.location.replace("./");
 		}

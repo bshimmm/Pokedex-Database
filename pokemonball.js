@@ -45,6 +45,20 @@ router.post('/', function (req, res) {
   })
 })
 
+router.put('/:id', function(req, res){
+  var mysql = req.app.get('mysql');
+        var sql = "UPDATE PokemonBall SET pb_cost=? WHERE pb_id=?";
+        var inserts = [req.body.pb_cost, req.params.pb_id];
+        sql = mysql.pool.query(sql,inserts,function(error, results, fields){
+            if(error){
+                res.write(JSON.stringify(error));
+                res.end();
+            }else{
+        res.redirect('/pokemonball');
+            }
+        });
+})
+
 router.delete('/delete', function(req, res) {
   var mysql = req.app.get('mysql'); 
   var sql = "DELETE FROM PokemonBall WHERE pb_id=?";
